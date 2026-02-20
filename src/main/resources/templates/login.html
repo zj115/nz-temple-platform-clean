@@ -1,14 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Login</title>
-  <link rel="stylesheet" th:href="@{/style.css}">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-login">
+
 <div class="bg-ornament"></div>
-<div th:replace="~{fragments/header :: siteHeader}"></div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-mark brand-logo-wrap" aria-hidden="true">
+        <img class="brand-logo" src="images/logo.jpg" alt="NZ Temple Logo" />
+      </div>
+
+      <div class="brand-text">
+        <div class="brand-title">
+          <span class="lang-en">New Zealand God of Wealth Temple</span>
+          <span class="lang-zh">新西兰财神庙</span>
+        </div>
+        <div class="brand-subtitle">
+          <span class="lang-en">Fox Spirit Relationship Hall</span>
+          <span class="lang-zh">狐仙姻缘堂</span>
+        </div>
+      </div>
+    </a>
+
+    <nav class="navlinks" aria-label="Primary">
+      <a href="index.html"><span class="lang-en">Home</span><span class="lang-zh">主页</span></a>
+      <a href="courses.html"><span class="lang-en">Courses</span><span class="lang-zh">课程</span></a>
+      <a href="booking.html"><span class="lang-en">Ritual Booking</span><span class="lang-zh">法事预约</span></a>
+      <a href="shop.html"><span class="lang-en">Shop</span><span class="lang-zh">法物商城</span></a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button class="btn btn-ghost btn-lang" type="button" id="langToggle" aria-label="Toggle language">
+        <span class="lang-en">中文</span>
+        <span class="lang-zh">EN</span>
+      </button>
+
+      <a class="btn btn-ghost" href="login.html">
+        <span class="lang-en">Login</span><span class="lang-zh">登录</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var key = 'lang';
+      var root = document.documentElement;
+
+      // Default language: zh (persisted across all pages)
+      var saved = localStorage.getItem(key);
+      var lang = (saved === 'zh' || saved === 'en') ? saved : 'zh';
+      root.setAttribute('data-lang', lang);
+
+      var btn = document.getElementById('langToggle');
+      if (!btn) return;
+
+      btn.addEventListener('click', function () {
+        var cur = root.getAttribute('data-lang') || 'zh';
+        var next = (cur === 'zh') ? 'en' : 'zh';
+        root.setAttribute('data-lang', next);
+        localStorage.setItem(key, next);
+        window.dispatchEvent(new Event('langchange'));
+      });
+    })();
+  </script>
+</header>
 
 <main class="container">
   <!-- Page Header -->
@@ -25,7 +86,7 @@
         </p>
       </div>
 
-      <a class="btn btn-gold" th:href="@{/booking}" style="white-space:nowrap;">
+      <a class="btn btn-gold" href="booking.html" style="white-space:nowrap;">
         <span class="lang-en">Go to Booking</span>
         <span class="lang-zh">前往预约</span>
       </a>
@@ -164,7 +225,7 @@
             <span class="lang-zh">记住我</span>
           </label>
 
-          <a th:href="@{/booking}" style="text-decoration:none;color:var(--gold2);font-weight:800;">
+          <a href="booking.html" style="text-decoration:none;color:var(--gold2);font-weight:800;">
             <span class="lang-en">Forgot password?</span>
             <span class="lang-zh">忘记密码？</span>
           </a>
@@ -180,7 +241,7 @@
             <span class="lang-en">No account yet?</span>
             <span class="lang-zh">还没有账号？</span>
           </div>
-          <a class="btn btn-ghost" th:href="@{/booking}" style="padding:8px 12px;">
+          <a class="btn btn-ghost" href="booking.html" style="padding:8px 12px;">
             <span class="lang-en">Create request</span>
             <span class="lang-zh">先提交预约</span>
           </a>

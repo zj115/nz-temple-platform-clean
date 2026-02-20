@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>NZ Temple</title>
-  <link rel="stylesheet" th:href="@{/style.css}">
+  <link rel="stylesheet" href="style.css">
   <style>
     /* ===== Merit Board (Home only) ===== */
     .merit-board{
@@ -138,11 +138,11 @@
 </head>
 <body>
 <div class="bg-ornament"></div>
-<header class="topbar" xmlns:th="http://www.thymeleaf.org">
+<header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" th:href="@{/}">
+    <a class="brand" href="index.html">
       <div class="brand-mark brand-logo-wrap" aria-hidden="true">
-        <img class="brand-logo" th:src="@{/images/logo.jpg}" alt="NZ Temple Logo" />
+        <img class="brand-logo" src="images/logo.jpg" alt="NZ Temple Logo" />
       </div>
 
       <div class="brand-text">
@@ -158,10 +158,10 @@
     </a>
 
     <nav class="navlinks" aria-label="Primary">
-      <a th:href="@{/}"><span class="lang-en">Home</span><span class="lang-zh">主页</span></a>
-      <a th:href="@{/courses}"><span class="lang-en">Courses</span><span class="lang-zh">课程</span></a>
-      <a th:href="@{/booking}"><span class="lang-en">Ritual Booking</span><span class="lang-zh">法事预约</span></a>
-      <a th:href="@{/shop}"><span class="lang-en">Shop</span><span class="lang-zh">法物商城</span></a>
+      <a href="index.html"><span class="lang-en">Home</span><span class="lang-zh">主页</span></a>
+      <a href="courses.html"><span class="lang-en">Courses</span><span class="lang-zh">课程</span></a>
+      <a href="booking.html"><span class="lang-en">Ritual Booking</span><span class="lang-zh">法事预约</span></a>
+      <a href="shop.html"><span class="lang-en">Shop</span><span class="lang-zh">法物商城</span></a>
     </nav>
 
     <div class="topbar-actions">
@@ -170,7 +170,7 @@
         <span class="lang-zh">EN</span>
       </button>
 
-      <a class="btn btn-ghost" th:href="@{/login}">
+      <a class="btn btn-ghost" href="login.html">
         <span class="lang-en">Login</span><span class="lang-zh">登录</span>
       </a>
     </div>
@@ -212,11 +212,11 @@
         <span class="lang-zh">如果你能看到这个金色/暗黑主题页面，说明 Thymeleaf + CSS 路径是正确的。</span>
       </p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a class="btn btn-gold" th:href="@{/fortune}">
+        <a class="btn btn-gold" href="fortune.html">
           <span class="lang-en">View Today’s Guidance</span>
           <span class="lang-zh">查看今日指引</span>
         </a>
-        <a class="btn btn-ghost" th:href="@{/booking}">
+        <a class="btn btn-ghost" href="booking.html">
           <span class="lang-en">Book a Ritual</span>
           <span class="lang-zh">预约法事</span>
         </a>
@@ -242,7 +242,7 @@
         </span>
         <span id="luckyHoursText" style="color:var(--gold2);font-weight:700;"></span>
       </div>
-      <a class="btn btn-gold" style="margin-top:12px;width:100%;" th:href="@{/fortune}">
+      <a class="btn btn-gold" style="margin-top:12px;width:100%;" href="fortune.html">
         <span class="lang-en">Open Daily Fortune</span>
         <span class="lang-zh">打开每日运势</span>
       </a>
@@ -635,7 +635,7 @@
 
     function loadMerit(){
       if (!meritTrack) return;
-      fetch('/data/merit.json', { cache: 'no-store' })
+      fetch('data/merit.json', { cache: 'no-store' })
         .then(function(r){
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
